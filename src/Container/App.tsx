@@ -11,6 +11,7 @@ import AddItems from '../Components/AddItems/AddItems';
 import OrderDetails from '../Components/OrderDetails/OrderDetails';
 
 const App = () => {
+    const [orders, setOrders] = useState<{id?: number; name: string; count: number; price: number}[]>([]);
 
     const itemsList: ItemsMenu[] = [
         {id: Math.random(), name: 'Hamburger', price: 80, image: Hamburger},
@@ -20,8 +21,6 @@ const App = () => {
         {id: Math.random(), name: 'Cola', price: 40, image: Cola},
         {id: Math.random(), name: 'Fries', price: 45, image: Fries},
     ];
-
-    const [orders, setOrders] = useState<{id?: number; name: string; count: number; price: number}[]>([]);
 
     const createOrder = (itemName: string, price: number) => {
         const existingOrderIndex = orders.findIndex((order) => order.name === itemName);
@@ -62,8 +61,8 @@ const App = () => {
         <div className='container'>
             <div className='OrderList'>
                 <p className='textInfo'>Order details:</p>
-                {orders.length > 0 ? <strong className='totalPrice'>Total price: {getTotalSum()} KGS </strong> :
-                    <p>Make an order!</p>}
+                {orders.length > 0 && (<strong className='totalPrice'>Total price: {getTotalSum()} KGS </strong>)}
+                {orders.length === 0 && (<p> Order is empty! Please make an order!</p>)}
                 {orderedItems}
             </div>
             <div className='ItemsList'>
