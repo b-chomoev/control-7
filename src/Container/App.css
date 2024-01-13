@@ -5,23 +5,82 @@
 }
 
 .OrderList {
-    margin-right: 150px;
+    margin-right: 20px;
+    padding: 20px;
     border: 1px solid black;
+    min-width: 300px;
 }
 
 .ItemsList {
+    padding: 20px;
     border: 1px solid black;
+    min-width: 300px;
 }
 
-.btnImage {
-    max-width: 100px;
-    display: block;
-    margin: 0 auto 10px;
-    border-radius: 5px;
+.textInfo {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.totalPrice {
+    font-size: 16px;
+    color: green;
 }
 
 .gridContainer {
     display: flex;
+    justify-content: space-around; /* Adjust as needed */
+    align-items: center; /* Adjust as needed */
     flex-wrap: wrap;
-    gap: 10px;
+}
+
+.addItemsMenu {
+    flex: 0 0 calc(33.33% - 20px); /* Adjust as needed */
+    margin: 10px;
+}
+
+.itemBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btnImage {
+    max-width: 80px; /* Adjust as needed */
+    display: block;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.costItem {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+.orderMenu {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.orderItems {
+    font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .OrderList,
+    .ItemsList {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
 }

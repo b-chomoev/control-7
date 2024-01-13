@@ -8,6 +8,7 @@ import Fries from '../assets/fries.png';
 import './App.css';
 import {ItemsMenu} from '../types';
 import AddItems from '../Components/AddItems/AddItems';
+import OrderDetails from '../Components/OrderDetails/OrderDetails';
 
 const App = () => {
 
@@ -42,16 +43,28 @@ const App = () => {
         }
     };
 
+    const getTotalSum = () => {
+        return orders.reduce((total, order) => {
+            return total + order.price;
+        }, 0);
+    };
+
     const itemButton = itemsList.map((item) => (
         <AddItems key={item.id} item={item} createOrder={createOrder} />
+    ));
+
+    const orderedItems = orders.map((order) => (
+        <OrderDetails key={order.id} order={order} />
     ));
 
 
     return (
         <div className='container'>
             <div className='OrderList'>
-                <h3>Order details</h3>
-                <p>Order is empty ! Please, make an order!</p>
+                <p className='textInfo'>Order details:</p>
+                {orders.length > 0 ? <strong className='totalPrice'>Total price: {getTotalSum()} KGS </strong> :
+                    <p>Make an order!</p>}
+                {orderedItems}
             </div>
             <div className='ItemsList'>
                 <strong>Add items: </strong>
