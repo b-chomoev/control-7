@@ -12,3 +12,16 @@
 .ItemsList {
     border: 1px solid black;
 }
+
+.btnImage {
+    max-width: 100px;
+    display: block;
+    margin: 0 auto 10px;
+    border-radius: 5px;
+}
+
+.gridContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}

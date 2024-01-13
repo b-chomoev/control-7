@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import Hamburger from '../assets/hamburger.png';
 import Cheeseburger from '../assets/cheeseburger.png';
 import Coffee from '../assets/coffee.png';
@@ -6,10 +6,12 @@ import Tea from '../assets/tea.png';
 import Cola from '../assets/cola.png';
 import Fries from '../assets/fries.png';
 import './App.css';
+import {ItemsMenu} from '../types';
+import AddItems from '../Components/AddItems/AddItems';
 
 const App = () => {
 
-    const itemsList = [
+    const itemsList: ItemsMenu[] = [
         {id: Math.random(), name: 'Hamburger', price: 80, image: Hamburger},
         {id: Math.random(), name: 'Cheeseburger', price: 90, image: Cheeseburger},
         {id: Math.random(), name: 'Coffee', price: 70, image: Coffee},
@@ -35,10 +37,14 @@ const App = () => {
 
             setOrders(updatedOrders);
         } else {
-            const newOrder = { id: Date.now().toString(), name: itemName, count: 1, price: price };
+            const newOrder = { id: Math.random(), name: itemName, count: 1, price: price };
             setOrders([...orders, newOrder]);
         }
     };
+
+    const itemButton = itemsList.map((item) => (
+        <AddItems key={item.id} item={item} createOrder={createOrder} />
+    ));
 
 
     return (
@@ -48,8 +54,10 @@ const App = () => {
                 <p>Order is empty ! Please, make an order!</p>
             </div>
             <div className='ItemsList'>
-                <h3>Add Items</h3>
-
+                <strong>Add items: </strong>
+                <div className='gridContainer'>
+                    {itemButton}
+                </div>
             </div>
         </div>
     );
