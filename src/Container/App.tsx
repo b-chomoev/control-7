@@ -19,7 +19,26 @@ const App = () => {
     ];
 
     const [orders, setOrders] = useState<{id?: number; name: string; count: number; price: number}[]>([]);
-    
+
+    const createOrder = (itemName: string, price: number) => {
+        const existingOrderIndex = orders.findIndex((order) => order.name === itemName);
+
+        if (existingOrderIndex !== -1) {
+            const updatedOrders = [...orders];
+            const existingOrder = updatedOrders[existingOrderIndex];
+
+            updatedOrders[existingOrderIndex] = {
+                ...existingOrder,
+                count: existingOrder.count + 1,
+                price: existingOrder.price + price,
+            };
+
+            setOrders(updatedOrders);
+        } else {
+            const newOrder = { id: Date.now().toString(), name: itemName, count: 1, price: price };
+            setOrders([...orders, newOrder]);
+        }
+    };
 
 
     return (
