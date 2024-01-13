@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.OrderList {
+    margin-right: 150px;
+    border: 1px solid black;
+}
+
+.ItemsList {
+    border: 1px solid black;
+}
